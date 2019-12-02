@@ -64,7 +64,7 @@ def a2():
             res = a2_help(x, y)
             if res == 19690720:
                 print("n1gger")
-                print(x, y)
+                print(100 * x + y)
 
 
 a1()
