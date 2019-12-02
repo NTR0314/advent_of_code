@@ -15,26 +15,57 @@ def op(input, ptr):
     return -1
 
 
-f = open("input.txt", "r")
-if f.mode == 'r':
-    file = f.read()
-    file = file.split(",")
+def a1():
+    f = open("input.txt", "r")
+    if f.mode == 'r':
+        file = f.read()
+        file = file.split(",")
 
-    #  cast chars to ints
-    file = [int(i) for i in file]
+        #  cast chars to ints
+        file = [int(i) for i in file]
+
+        #  restore gravity program xD
+        file[1] = 12
+        file[2] = 2
+        op_code_ptr = 0
+
+        while (op(file, op_code_ptr) == 1) & (op_code_ptr <= len(file)):
+            op_code_ptr += 4
+
+        print(file[0])
 
 
-    #  restore gravity program xD
-    file[1] = 12
-    file[2] = 2
-    op_code_ptr = 0
+def a2_help(noun, verb):
+    f = open("input.txt", "r")
+    if f.mode == 'r':
+        file = f.read()
+        file = file.split(",")
 
-    print("initial")
-    print(file)
+        #  cast chars to ints
+        file = [int(i) for i in file]
 
-    while (op(file, op_code_ptr) == 1) & (op_code_ptr <= len(file)):
-        print("running")
-        print(file)
-        op_code_ptr += 4
+        #  restore gravity program xD
+        file[1] = noun
+        file[2] = verb
+        op_code_ptr = 0
 
-    print(file[0])
+        while (op(file, op_code_ptr) == 1) and (op_code_ptr <= len(file)):
+            op_code_ptr += 4
+
+        return file[0]
+
+
+def a2():
+    depth = 1
+    found = False
+
+    for x in range(100):
+        for y in range(100):
+            res = a2_help(x, y)
+            if res == 19690720:
+                print("n1gger")
+                print(x, y)
+
+
+a1()
+a2()
