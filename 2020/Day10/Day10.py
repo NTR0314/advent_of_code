@@ -1,6 +1,8 @@
-from math import prod
+from math import prod, log10
 
-adapters = [int(x) for x in open("input.txt").readlines()]
+file_path = "bigboy.txt"
+
+adapters = [int(x) for x in open(file_path).readlines()]
 adapters.sort()
 # Laptop-Adapter
 adapters.append(adapters[-1] + 3)
@@ -45,4 +47,4 @@ def calc_possible(adapters):
     return sum([calc_possible(adapters[adapters.index(x):]) for x in possible_next])
 
 
-print(f"gold: {prod([calc_possible(x) for x in pre_process(adapters)])}")
+print(f"gold: log_10 ~= {log10(prod([calc_possible(x) for x in pre_process(adapters)]))}")
