@@ -39,12 +39,7 @@ def check_time(time, bus_delays):
 
 # Because first bus doesn't necesseraly have delay zero
 t_gold = 0 - bus_delays[0][1]
-#for i in range(10):
-#    inc = check_time(t_gold, bus_delays)
 while (inc := check_time(t_gold, bus_delays)) > 0:
     t_gold += inc
-
-# for bus in bus_delays:
-#     print(f"bus id:{bus[1]}, bus intervall:{bus[0]}, check: {(t_gold + bus[1]) % bus[0]}")
 
 print(f"gold: {t_gold}")
